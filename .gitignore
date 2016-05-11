@@ -1,9 +1,9 @@
 *.class
 *.log
-*.xml
 *.jar
 *.iml
 *.MF
+.idea/
 
 # sbt specific
 .cache
