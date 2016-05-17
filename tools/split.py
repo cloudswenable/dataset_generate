@@ -21,8 +21,47 @@ def createOutFiles(outdir, file, rangelist):
         i+=1
     return ofile
 
+
+def compare(x, y):
+    if(x[0]<y[0]):
+        return -1
+    elif(x[0] > y[0]):
+        return 1
+    else:
+        if(x[1] < y[1]):
+            return -1
+        elif(x[1] > y[1]):
+            return 1
+        else:
+            return 0
+    
 def trans(file, outdir):
-    return
+    path = os.path.abspath(file)
+    fname = os.path.basename(file).split('.')[0]
+
+    outdir = path.split(fname)[0]+outdir
+    print outdir
+
+    if(not os.path.exists(outdir)):
+        os.mkdir(outdir)
+
+    ofname = outdir+ '/' + fname + '_trans.csv'
+    print ofname
+    infile = open(file)
+    ofile = open(ofname, 'w')
+    ratings = []
+    for line in infile:
+        keys = line.strip().split(',')
+        ratings.append((int(keys[1]), int(keys[0]), float(keys[2])))
+    
+    ratings.sort(lambda x,y: compare(x,y))
+    #ratings = sorted(ratings, key=lambda x:x[0])
+    print(ratings)
+    print len(ratings)
+    for r in ratings:
+        ofile.write(str(r[0]) + ',' + str(r[1]) + ',' + str(r[2]) + '\n')
+
+    ofile.close()
 
 def hashSplit(slices):
     return
