@@ -21,6 +21,8 @@ def createOutFiles(outdir, file, rangelist):
         i+=1
     return ofile
 
+def trans(file, outdir):
+    return
 
 def hashSplit(slices):
     return
@@ -67,6 +69,8 @@ if __name__ == '__main__':
         hashSplit(args.slicesi, args.file, args.outdir)
     elif args.method == 'range':
         rangeSplit(args.slices, args.ranges, args.file, args.outdir)
+    elif args.method == 'trans':
+        trans(args.file, args.outdir)
     else:
         print('unsupported split method ' + args.method )
         sys.exit(2)
