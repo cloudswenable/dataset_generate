@@ -17,7 +17,7 @@ def createOutFiles(outdir, file, rangelist):
     for count in rangelist:
         ofname = outdir+'/'+fname+'_'+str(i+1)+'.csv'
         print ofname
-        ofile[i] = open(fname,'w')
+        ofile.append(open(ofname,'w'))
         i+=1
     return ofile
 
@@ -55,6 +55,8 @@ def rangeSplit(slices, ranges, file, outdir):
                 else:
                     print("error number for slice")
                     sys.exit(2)
+    for f in ofile:
+        f.close()
 
 
 if __name__ == '__main__':

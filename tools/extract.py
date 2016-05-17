@@ -14,7 +14,7 @@ def process(fname):
         cid=1
         for data in fields:
             if(data.strip() != "0".strip()):
-                ofile.write(str(rowid)+","+str(cid)+","+data+"\n")
+                ofile.write(str(rowid)+","+str(cid)+","+data.strip()+"\n")
             cid += 1
         rowid += 1
         
